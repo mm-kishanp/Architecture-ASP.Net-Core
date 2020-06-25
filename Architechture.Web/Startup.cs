@@ -1,4 +1,5 @@
 ﻿using Architecture.Web.Configuration;
+using Architecture.Web.Models;
 using Architecture.BusinessLogic;
 using Architecture.BusinessLogic.Authentication;
 using Architecture.DataBase.DatabaseFirst;
@@ -34,6 +35,7 @@ namespace Architecture.Web
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
+            services.Configure<AzureStorageConfig>(Configuration.GetSection("AzureStorageConfig"));
 
             // SITE CONFIGURATION
             services.AddScoped<SiteConfiguration>();
