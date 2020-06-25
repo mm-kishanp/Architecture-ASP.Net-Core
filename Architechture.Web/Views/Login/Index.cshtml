@@ -1,0 +1,33 @@
+﻿@model Architecture.Entities.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<p class="login-box-msg">Sign in to start your session</p>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group has-feedback">
+                @*<label asp-for="UserName" class="control-label"></label>*@
+                <input asp-for="UserName" class="form-control" placeholder="Email" />  <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group has-feedback">
+                @*<label asp-for="Password" class="control-label"></label>*@
+                <input asp-for="Password" class="form-control" type="password" placeholder="Password" />   <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" value="Sign In" class="btn btn-primary btn-block btn-flat" />
+                </div>
+            </div>
+        </form>
+
+        <a href="#">I forgot my password</a><br>
+        <a href="register.html" class="text-center">Register a new membership</a>
+
+    </div>
+</div>

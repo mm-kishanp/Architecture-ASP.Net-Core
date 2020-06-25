@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Architecture.Web</title>
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/AdminTheme/lib/bootstrap/dist/css/bootstrap.min.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              asp-fallback-href="~/AdminTheme/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+              crossorigin="anonymous"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" />
+    </environment>
+    @*<link rel="stylesheet" href="~/css/site.css" />*@
+    <link href="~/AdminTheme/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/AdminTheme/lib/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/AdminTheme/lib/AdminLTE/css/AdminLTE.min.css" rel="stylesheet" />
+    <link href="~/AdminTheme/lib/AdminLTE/css/skin-blue.min.css" rel="stylesheet" />
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <header class="main-header">
+            <a href="../../index2.html" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>LT</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Admin</b>LTE</span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu ">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                                <img src="~/AdminTheme/NewFolder/user.png" class="user-image" alt="User Image">                    
+                                <span class="hidden-xs">@User.Claims.FirstOrDefault(x=>x.Type == "Email").Value</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="~/AdminTheme/NewFolder/user.png" class="img-circle" alt="User Image">
+                                    
+                                    <p>
+                                        @User.Claims.FirstOrDefault(x => x.Type == Architecture.BusinessLogic.CustomClaimTypes.Email.ToString()).Value - @User.Claims.FirstOrDefault(x => x.Type == Architecture.BusinessLogic.CustomClaimTypes.RoleName.ToString()).Value
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    </div>
+                                      <div class="pull-right">
+                                        <a asp-controller="login" asp-action="LogoutAsync" asp-area="" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">*@
+                @*<div class="container">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Architecture.Web</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>*@
+            </nav>
+        </header>
+        <partial name="_LeftSideColumnPartial" />
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            @*<partial name="_CookieConsentPartial" />*@
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+        @*<footer class="border-top footer text-muted">
+            <div class="container">
+                &copy; 2019 - Architecture.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </footer>*@
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 2.4.18
+            </div>
+            <strong>Copyright &copy; 2014-2019 .</strong> All rights
+            reserved.
+        </footer>
+
+        <environment include="Development">
+            <script src="~/AdminTheme/lib/jquery/dist/jquery.js"></script>
+            <script src="~/AdminTheme/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+        </environment>
+        <environment exclude="Development">
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+                    asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                    asp-fallback-test="window.jQuery"
+                    crossorigin="anonymous"
+                    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
+            </script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+                    asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                    crossorigin="anonymous"
+                    integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+            </script>
+        </environment>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/AdminTheme/lib/AdminLTE/js/adminlte.min.js"></script>
+        <script src="~/AdminTheme/lib/AdminLTE/js/demo.js"></script>
+        <script src="~/AdminTheme/lib/jquery-validation/dist/jquery.validate.js"></script>
+        <script src="~/AdminTheme/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

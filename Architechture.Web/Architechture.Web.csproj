@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <RootNamespace>Architechture.Web</RootNamespace>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="jQuery" Version="3.4.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Architecture.BusinessLogic\Architecture.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Architecture.ILogger\Architecture.ILogger.csproj" />
+    <ProjectReference Include="..\Architecture.Interface\Architecture.Interface.csproj" />
+    <ProjectReference Include="..\Architecture.Repository\Architecture.Repository.csproj" />
+    <ProjectReference Include="..\Architecture.Utility\Architecture.Utility.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="wwwroot\AdminTheme\js\" />
+    <Folder Include="wwwroot\AdminTheme\css\" />
+    <Folder Include="wwwroot\AdminTheme\lib\Ionicons\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="wwwroot\AdminTheme\lib\font-awesome\css\font-awesome.css.map" />
+    <None Include="wwwroot\AdminTheme\lib\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\AdminTheme\lib\font-awesome\fonts\fontawesome-webfont.woff2" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Content Update="nlog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

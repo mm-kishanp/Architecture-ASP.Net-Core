@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CustomConfiguration>
+  <CommonSettings>
+    <PasswordEncryptionSecurityKey>ENCRYPTIONSECURITYKEY</PasswordEncryptionSecurityKey>
+  </CommonSettings>
+  <ErrorMessages>
+    <Please_fill_mandatory_fields>
+      <Message>Please fill mandatory fields</Message>
+      <Code>101</Code>
+    </Please_fill_mandatory_fields>
+    <User_is_not_exist>
+      <Message>User is not exist</Message>
+      <Code>102</Code>
+    </User_is_not_exist>
+    <Internal_error>
+      <Message>There was an internal error, please contact to technical support.</Message>
+      <Code>103</Code>
+    </Internal_error>
+  </ErrorMessages>
+</CustomConfiguration>
