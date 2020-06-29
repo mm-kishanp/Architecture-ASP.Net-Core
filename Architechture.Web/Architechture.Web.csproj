@@ -8,6 +8,7 @@
 
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.S3" Version="3.3.111.18" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.4.4" />
     <PackageReference Include="Azure.Storage.Common" Version="12.4.3" />
     <PackageReference Include="jQuery" Version="3.4.1" />

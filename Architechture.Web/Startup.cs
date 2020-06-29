@@ -36,6 +36,7 @@ namespace Architecture.Web
                 options.MinimumSameSitePolicy = SameSiteMode.Strict;
             });
             services.Configure<AzureStorageConfig>(Configuration.GetSection("AzureStorageConfig"));
+            services.Configure<AWSBucketConfig>(Configuration.GetSection("AWSBucketConfig"));
 
             // SITE CONFIGURATION
             services.AddScoped<SiteConfiguration>();
