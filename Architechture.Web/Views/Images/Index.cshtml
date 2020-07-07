@@ -44,11 +44,12 @@
             }
 </style>
 
+@model List<ImageList>
 
 <main>
     @*<div class="box header">
-        <h1><span class="fa fa-user-circle-o"></span> <span id="page-title">ImageResizer</span></h1>
-    </div>*@
+            <h1><span class="fa fa-user-circle-o"></span> <span id="page-title">ImageResizer</span></h1>
+        </div>*@
 
 
     <div class="box content">
@@ -74,7 +75,11 @@
         <h2>Generated Thumbnails</h2>
         <!-- <p><span id="gallery-note">Gallery refreshes from storage container image links every 5 seconds.</span></p> -->
         <div id="stored-images"></div>
-
+        @foreach(var file in Model)
+        {
+            <a href="@file.Url" target="_blank">@file.FileName</a>
+            <br /><br />
+        }
         <!-- The Gallery as inline carousel, can be positioned anywhere on the page -->
         <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
             <div class="slides"></div>
@@ -89,7 +94,7 @@
     <div class="box footer">
         <hr>
         <div class="privacy">
-          
+
         </div>
     </div>
 </main>
@@ -105,30 +110,31 @@
     // Grab links for images from backend api
     function fetchImageLinks() {
         // Fetch images
-        $.get("api/Images/thumbnails", function(fetchedImageLinks) {
+        $.get("Images/getThumb", function (fetchedImageLinks) {
+            debugger
             console.log(fetchedImageLinks)
 
             // Check if anything is in there
-            if ( _.isEmpty(fetchedImageLinks) ){
+            if (_.isEmpty(fetchedImageLinks)) {
                 console.log('empty fetched')
                 // do nothing
             } else {
                 // Check if we have a gallery initialized
-                if ( _.isEmpty(gallery) ) {
+                if (_.isEmpty(gallery)) {
                     // initialize gallery
                     gallery = blueimp.Gallery(
-                                fetchedImageLinks, // gallery links array
-                                {
-                                    container: '#blueimp-gallery-carousel',
-                                    carousel: true
-                                } // gallery options
-                            );
+                        fetchedImageLinks, // gallery links array
+                        {
+                            container: '#blueimp-gallery-carousel',
+                            carousel: true
+                        } // gallery options
+                    );
                 } else {
                     // check if images are equal to array
                     console.log('currently in gallery:')
                     console.log(gallery.list)
                     var imageLinksEqual = _.isEqual(_.sortBy(gallery.list.map(s => s.split("?")[0])), _.sortBy(fetchedImageLinks.map(s => s.split("?")[0])))
-                    if ( imageLinksEqual ) {
+                    if (imageLinksEqual) {
                         console.log('images arr are equal')
                         // do nothing
                     } else {
@@ -150,8 +156,8 @@
         });
     }
 
-    //// Start first interval
-    //fetchImageLinks()
+    // Start first interval
+    fetchImageLinks()
 
     //setInterval(function() {
     //    fetchImageLinks()
@@ -168,7 +174,7 @@
             myDropzone = this;
             //myDropzone.imageUpload.url '/api/Images/Upload',
 
-            myDropzone.on("success", function(file, response) {
+            myDropzone.on("success", function (file, response) {
                 console.log("Success");
                 //myDropzone.removeFile(file);
             });
