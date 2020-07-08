@@ -1,4 +1,4 @@
-﻿using Architecture.DataBase.DatabaseFirst.Models;
+﻿using Architecture.DataBase.DataBaseFirst.Models;
 using Architecture.Interface;
 using Architecture.Services;
 using System;

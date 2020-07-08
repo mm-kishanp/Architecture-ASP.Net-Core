@@ -17,6 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="Migrations\20200708062116_Initial.cs" />
+    <Compile Include="Migrations\20200708062116_Initial.Designer.cs" />
+    <Compile Include="Migrations\AccountContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />

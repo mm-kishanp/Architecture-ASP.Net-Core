@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Architecture.DataBase.DatabaseFirst.Models
+namespace Architecture.DataBase.DataBaseFirst.Models
 {
     public partial class Users
     {

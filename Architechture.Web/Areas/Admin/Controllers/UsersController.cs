@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 namespace Architecture.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
-    [PermissionFilter(permission: "Admin", customClaimTypes: CustomClaimTypes.RoleName)]
+    //[Authorize]
+    //[PermissionFilter(permission: "Admin", customClaimTypes: CustomClaimTypes.RoleName)]
     public class UsersController : BaseController
     {
         private IUsersBL _usersBL;

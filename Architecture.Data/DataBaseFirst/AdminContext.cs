@@ -1,7 +1,7 @@
-﻿using Architecture.DataBase.DatabaseFirst.Models;
+﻿using Architecture.DataBase.DataBaseFirst.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Architecture.DataBase.DatabaseFirst
+namespace Architecture.DataBase.DataBaseFirst
 {
     public partial class AdminContext : DbContext
     {

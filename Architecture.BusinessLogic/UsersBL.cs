@@ -1,7 +1,8 @@
-﻿using Architecture.DataBase.DatabaseFirst.Models;
+﻿using Architecture.DataBase.DataBaseFirst.Models;
 using Architecture.Entities;
 using Architecture.Interface;
 using Architecture.Services;
+using AutoMapper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,27 +14,32 @@ namespace Architecture.BusinessLogic
         private readonly IUser _user;
         private readonly IUserRole _userRole;
         private readonly IRole _role;
+        private IMapper _mapper;
 
-        public UsersBL(IUser user, IUserRole userRole, IRole role)
+        public UsersBL(IUser user, IUserRole userRole, IRole role, IMapper mapper)
         {
             _user = user;
             _userRole = userRole;
             _role = role;
+            _mapper = mapper;
         }
 
         public List<UsersEntity> GetUsersEntity(int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var users = _user.GetUsersPaging(pageIndex, pageSize);
+            return _mapper.Map<List<UsersEntity>>(users);
             return PrepareUserToUsersEntity(users);
         }
         public UsersEntity GetUsersEntityById(long userId)
         {
             var users = _user.GetUsersById(userId);
+            return _mapper.Map<UsersEntity>(users);
             return PrepareUserToUsersEntity(users);
         }
         public UsersEntity CreataUser(UsersEntity user)
         {
-            var newUser = PrepareUsersEntityToUser(user);
+            var newUser = _mapper.Map<Users>(user);
+            //var newUser = PrepareUsersEntityToUser(user);
             _user.AddUser(newUser);
             return user;
         }
@@ -42,7 +48,8 @@ namespace Architecture.BusinessLogic
         {
             user.UpdatedDate = DateTime.Now;
             user.UpdatedUtcdate = DateTime.UtcNow;
-            var newUser = PrepareUsersEntityToUser(user);
+            var newUser = _mapper.Map<Users>(user);
+            //var newUser = PrepareUsersEntityToUser(user);
             _user.UpdateUser(newUser);
             return user;
         }
@@ -144,7 +151,7 @@ namespace Architecture.BusinessLogic
                 UpdatedDate = usersEntity.UpdatedDate,
                 UpdatedUtcdate = usersEntity.UpdatedUtcdate
             };
-        } 
+        }
         #endregion
     }
 }

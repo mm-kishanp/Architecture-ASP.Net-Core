@@ -1,4 +1,4 @@
-﻿using Architecture.DataBase.DatabaseFirst;
+﻿using Architecture.DataBase.DataBaseFirst;
 //using Architecture.Data.Models;
 using Architecture.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -106,10 +106,10 @@ namespace Architecture.Repository
         /// <param name="query"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IQueryable<TEntity> GetWithRawSql(string query, params object[] parameters)
-        {
-            return GetEntities().FromSql(query, parameters);
-        }
+        //public IQueryable<TEntity> GetWithRawSql(string query, params object[] parameters)
+        //{
+        //    return GetEntities().FromSql(query, parameters);
+        //}
        
         /// <summary>
         /// Insert entity

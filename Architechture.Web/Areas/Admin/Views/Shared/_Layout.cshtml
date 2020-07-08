@@ -44,7 +44,7 @@
                         <li class="dropdown user user-menu ">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
                                 <img src="~/AdminTheme/NewFolder/user.png" class="user-image" alt="User Image">                    
-                                <span class="hidden-xs">@User.Claims.FirstOrDefault(x=>x.Type == "Email").Value</span>
+                                <span class="hidden-xs">@*@User.Claims.FirstOrDefault(x=>x.Type == "Email").Value*@</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
@@ -52,7 +52,7 @@
                                     <img src="~/AdminTheme/NewFolder/user.png" class="img-circle" alt="User Image">
                                     
                                     <p>
-                                        @User.Claims.FirstOrDefault(x => x.Type == Architecture.BusinessLogic.CustomClaimTypes.Email.ToString()).Value - @User.Claims.FirstOrDefault(x => x.Type == Architecture.BusinessLogic.CustomClaimTypes.RoleName.ToString()).Value
+                                        @*@User.Claims.FirstOrDefault(x => x.Type == Architecture.BusinessLogic.CustomClaimTypes.Email.ToString()).Value - @User.Claims.FirstOrDefault(x => x.Type == Architecture.BusinessLogic.CustomClaimTypes.RoleName.ToString()).Value*@
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>

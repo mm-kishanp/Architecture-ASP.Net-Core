@@ -71,7 +71,7 @@ namespace Architecture.Interface
         /// <param name="query">QUERY </param>
         /// <param name="parameters">Param to send</param>
         /// <returns></returns>
-        IQueryable<TEntity> GetWithRawSql(string query,params object[] parameters);
+        //IQueryable<TEntity> GetWithRawSql(string query,params object[] parameters);
  
         #endregion
 
